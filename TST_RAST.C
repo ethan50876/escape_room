@@ -1,33 +1,52 @@
 #include <osbind.h>
 #include "raster.h"
+#include "bitmaps.h"
+
 
 int main()
 {
+	
 	void *base = Physbase();
 
+	
 	blank_screen();
 	
-	fill_screen(base, -1);     /* set screen to all black */
-	Cnecin();                  /* wait for key press, don't echo */
+	plot_bitmap_8(base, player8x8, 300, 100, 8);
+	
+	
+	plot_bitmap_16(base, player16x16, 300, 150, 16);
+	
+	
+	plot_bitmap_32(base, player32x32, 300, 200, 32);
+	
+	
+	plot_bitmap_32(base, blockA, 100, 100, 32);
+	
 
-	fill_screen(base, 1);      /* set screen to all white */
-	Cnecin();
+	plot_bitmap_32(base, blockB, 100, 150, 32);
 	
-	blank_screen();  
-	plot_point(base,100,200);	/* plots 2 points */
-	plot_point(base,200,250);
-	Cnecin();
+
+	plot_bitmap_32(base, blockC, 100, 200, 32);
 	
-	blank_screen();
-	plot_vline(base, 100, 100, 200);	/* vert line test */
-	Cnecin();
+
+	plot_bitmap_32(base, blockD, 100, 250, 32);
+
 	
-	blank_screen();
-	plot_hline(base, 100, 300, 250);	/* horz line test */
-	Cnecin();
+	plot_bitmap_32(base, heldslot, 200, 100, 32);
 	
-	blank_screen();
-	plot_rectangle(base, 100, 100, 200, 100);	/* rectangle test */
+	
+	plot_bitmap_32(base, key_demo, 200, 150, 32);
+	
+	
+	plot_bitmap_32(base, projectile, 200, 200, 32);
+	
+	
+	plot_bitmap_32(base, trash_bin, 200, 250, 32);
+	
+
+
+	
+	
 
 	return 0;
 }
