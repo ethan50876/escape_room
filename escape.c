@@ -19,6 +19,7 @@ void async_events(Model* model) {
 void game_loop() {
 	
 	Model model;
+	UINT32 *base;
 	
 	render(base, model);
 	
