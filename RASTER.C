@@ -2,6 +2,7 @@
 
 
 
+
 void blank_screen()
 {
 	printf("\033E\033f\n");					/* blanks screen and hides cursor */
@@ -88,7 +89,7 @@ void plot_bitmap_32(UINT32 *base, UINT32 *bitmap, int x, int y, int height) {
 
 void plot_room(UINT32 *base, UINT32 *room) {
   int i;
-  for(i = 0; i < 8000; i++)
+  for(i = 0; i < 32000; i++)
 	*(base + i) = room[i];
  }
 

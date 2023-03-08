@@ -14,6 +14,7 @@ extern UINT32 heldslot[];
 extern UINT32 key_demo[];
 extern UINT32 projectile[];
 extern UINT32 trash_bin[];
+extern UINT32 door[];
 
 
 #endif
