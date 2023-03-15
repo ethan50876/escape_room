@@ -9,12 +9,9 @@
 
 int main()
 {
-	int x = 1;
-	while (x == 1) {
-		
-		game_loop();
 	
-	}
+	game_loop();
+	
 
 	return 0;
 }

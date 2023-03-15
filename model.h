@@ -12,8 +12,11 @@ typedef struct Player {
 
 } Player;
 
+
+
 typedef struct Model {
     Player player;
+
 	
 } Model;
 

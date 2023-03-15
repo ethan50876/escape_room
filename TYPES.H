@@ -3,12 +3,12 @@
 
 #include <osbind.h>
 
-#define ESC_KEY 0x0001001b
-#define LEFT_KEY 0x004b0000
-#define RIGHT_KEY 0x004d0000
-#define SPACE_KEY 0x00390020
-#define UP_KEY 0x00480000
-#define DOWN_KEY 0x00500000
+#define ESC_KEY 0x01
+#define LEFT_KEY 0x4b
+#define RIGHT_KEY 0x4d
+#define SPACE_KEY 0x39
+#define UP_KEY 0x48
+#define DOWN_KEY 0x50
 
 #define GRID_VALUE 16
 

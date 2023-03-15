@@ -7,7 +7,7 @@
 #include "event.h"
 #include "render.h"
 
-void async_events(Model* model);
+void async_events(Model* model, UINT32* base);
 void game_loop();
 
 #endif
