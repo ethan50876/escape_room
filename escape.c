@@ -1,4 +1,5 @@
 #include "escape.h"
+#include <osbind.h>
 
 
 void async_events(Model* model) {
@@ -18,12 +19,15 @@ void async_events(Model* model) {
 
 void game_loop() {
 	
-	Model *model;
-	UINT32 *base;
 	
-	render_room1(base, model);
 	
-	async_events(model);
+	Model model;
+	UINT32 *base = Physbase();
+	initialize_game(&model);
+	
+	render_room1(base, &model);
+	
+	async_events(&model);
 	
 	
 	

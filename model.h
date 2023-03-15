@@ -20,5 +20,7 @@ typedef struct Model {
 
 
 void move_player(Player *player, Direction direction);
+void initialize_player(Player *player);
+void initialize_game(Model *model);
 
 #endif

@@ -8,6 +8,8 @@ void render_room1 (UINT32 *base, Model *model) {
 	render_key_r1(base);
 	render_door_r1(base);
 	render_held_r1(base);
+
+	
 	
 }
 
