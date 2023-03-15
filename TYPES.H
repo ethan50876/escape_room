@@ -1,6 +1,8 @@
 #ifndef TYPES_H
 #define TYPES_H
 
+#include <osbind.h>
+
 #define ESC_KEY 0x0001001b
 #define LEFT_KEY 0x004b0000
 #define RIGHT_KEY 0x004d0000
@@ -17,5 +19,7 @@ typedef unsigned long UINT32;
 typedef enum {
     left, right, up, down
 } Direction;
+
+typedef unsigned char bool;
 
 #endif

@@ -3,17 +3,14 @@
 #include "bitmaps.h"
 #include "rooms.h"
 #include "render.h"
-
+#include "model.h"
+#include "TYPES.H"
+#include "escape.h"
 
 int main()
 {
 	
-	void *base = Physbase();
-
-	
-	blank_screen();
-	
-	render_room1(base, player32x32, key_demo, door, demo_room, heldslot);	
+	game_loop();
 	
 
 	return 0;

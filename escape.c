@@ -3,13 +3,13 @@
 
 void async_events(Model* model) {
 	
-  UINT32 input;
+  unsigned long input;
   if (has_user_input()) {
 	  
     input = get_user_input();
 	
-      if (key_repeat)
-       player_movement(&model->player, input);
+    
+    player_movement(&model->player, input);
     
   }
 }
@@ -18,17 +18,16 @@ void async_events(Model* model) {
 
 void game_loop() {
 	
-	Model model;
+	Model *model;
 	UINT32 *base;
 	
-	render(base, model);
+	render_room1(base, model);
 	
-	async_events(&model);
+	async_events(model);
 	
 	
 	
 }
-
 
 
 
