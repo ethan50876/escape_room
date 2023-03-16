@@ -2,20 +2,20 @@
 
 
 
-void player_movement(Player *player, unsigned long key_press) {
+void player_movement(Player *player, Room *room, unsigned long key_press) {
 	switch (key_press) {
 		
         case LEFT_KEY:
-        move_player(player, left);
+        move_player(player, room, left);
 		break;
         case RIGHT_KEY:
-        move_player(player, right);
+        move_player(player, room, right);
 		break;
         case UP_KEY:
-        move_player(player,up);
+        move_player(player, room, up);
 		break;
         case DOWN_KEY:
-        move_player(player, down);
+        move_player(player, room, down);
 		break;
         default:
         break;
@@ -25,7 +25,8 @@ void player_movement(Player *player, unsigned long key_press) {
 
 bool has_user_input() {
 	
-	return Cconis();
+	return (bool) (Cconis());
+
 	
 }
 

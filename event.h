@@ -7,7 +7,7 @@
 #include "model.h"
 
 
-void player_movement(Player *player, unsigned long key_press);
+void player_movement(Player *player, Room *room, unsigned long key_press);
 
 bool has_user_input();
 

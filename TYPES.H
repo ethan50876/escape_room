@@ -11,6 +11,8 @@
 #define DOWN_KEY 0x50
 
 #define GRID_VALUE 16
+#define MAX_ROOMS 10
+#define MAX_BOUNDARIES 9
 
 typedef unsigned char UINT8;
 typedef unsigned int  UINT16;
@@ -20,6 +22,8 @@ typedef enum {
     left, right, up, down
 } Direction;
 
-typedef unsigned char bool;
+typedef int bool;
+#define true 1
+#define false 0
 
 #endif
