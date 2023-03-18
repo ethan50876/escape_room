@@ -80,75 +80,149 @@ L1:
 	movem.l	-20(a6),d3/d4/d5/a3/a4
 	unlk	a6
 	rts
-_initialize_player:
+_set_player:
 	link	a6,#0
 	;line	29
 	move.l	8(a6),a0
-	move.w	#320,(a0)
+	move.w	12(a6),(a0)
 	;line	30
 	move.l	8(a6),a0
-	move.w	#64,2(a0)
+	move.w	14(a6),2(a0)
+	unlk	a6
+	rts
+_initialize_player:
+	link	a6,#0
+	;line	36
+	move.w	#300,-(a7)
+	move.w	#320,-(a7)
+	move.l	8(a6),-(a7)
+	jsr	_set_player
 	unlk	a6
 	rts
 _initialize_game:
 	link	a6,#0
-	;line	35
+	;line	41
 	move.l	8(a6),-(a7)
 	jsr	_initialize_array
 	addq.l	#4,a7
-	;line	36
-	move.l	8(a6),d0
-	addq.l	#2,d0
-	move.l	d0,-(a7)
+	;line	42
+	move.l	8(a6),-(a7)
 	jsr	_initialize_player
 	unlk	a6
 	rts
 _initialize_room1:
 	link	a6,#0
-	move.l	a3,-(a7)
+	movem.l	d3/a3,-(a7)
 	move.l	8(a6),a3
-	;line	44
-	clr.w	16(a3)
-	;line	45
-	move.w	#640,18(a3)
-	;line	46
-	clr.w	20(a3)
-	;line	47
-	move.w	#16,22(a3)
-	;line	49
-	move.w	#608,8(a3)
-	;line	50
-	move.w	#640,10(a3)
+	moveq	#16,d3
 	;line	51
-	clr.w	12(a3)
+	clr.w	0(a3,d3.l)
 	;line	52
-	move.w	#400,14(a3)
+	move.w	#640,18(a3)
+	;line	53
+	clr.w	20(a3)
 	;line	54
-	clr.w	(a3)
-	;line	55
-	move.w	#16,2(a3)
+	move.w	d3,22(a3)
 	;line	56
-	clr.w	4(a3)
+	move.w	#608,8(a3)
 	;line	57
-	move.w	#400,6(a3)
+	move.w	#640,10(a3)
+	;line	58
+	clr.w	12(a3)
 	;line	59
-	clr.w	24(a3)
-	;line	60
-	move.w	#640,26(a3)
+	move.w	#400,14(a3)
 	;line	61
-	move.w	#368,28(a3)
+	clr.w	(a3)
 	;line	62
+	move.w	d3,2(a3)
+	;line	63
+	clr.w	4(a3)
+	;line	64
+	move.w	#400,6(a3)
+	;line	66
+	clr.w	24(a3)
+	;line	67
+	move.w	#640,26(a3)
+	;line	68
+	move.w	#368,28(a3)
+	;line	69
 	move.w	#400,30(a3)
-	move.l	(a7)+,a3
+	;line	71
+	clr.w	48(a3)
+	;line	72
+	move.w	#288,40(a3)
+	;line	73
+	move.w	#320,42(a3)
+	;line	74
+	move.w	d3,44(a3)
+	;line	75
+	move.w	#64,46(a3)
+	movem.l	(a7)+,d3/a3
+	unlk	a6
+	rts
+_initialize_room2:
+	link	a6,#0
+	movem.l	d3/a3,-(a7)
+	move.l	8(a6),a3
+	move.w	#400,d3
+	;line	81
+	clr.w	16(a3)
+	;line	82
+	move.w	#640,18(a3)
+	;line	83
+	clr.w	20(a3)
+	;line	84
+	move.w	#16,22(a3)
+	;line	86
+	move.w	#608,8(a3)
+	;line	87
+	move.w	#640,10(a3)
+	;line	88
+	clr.w	12(a3)
+	;line	89
+	move.w	d3,14(a3)
+	;line	91
+	clr.w	(a3)
+	;line	92
+	move.w	#16,2(a3)
+	;line	93
+	clr.w	4(a3)
+	;line	94
+	move.w	d3,6(a3)
+	;line	96
+	clr.w	24(a3)
+	;line	97
+	move.w	#640,26(a3)
+	;line	98
+	move.w	#368,28(a3)
+	;line	99
+	move.w	d3,30(a3)
+	;line	107
+	clr.w	58(a3)
+	;line	108
+	move.w	#288,50(a3)
+	;line	109
+	move.w	#320,52(a3)
+	;line	110
+	move.w	#336,54(a3)
+	;line	111
+	move.w	d3,56(a3)
+	movem.l	(a7)+,d3/a3
 	unlk	a6
 	rts
 _initialize_array:
 	link	a6,#0
-	;line	69
+	;line	120
 	move.l	8(a6),d0
-	addq.l	#8,d0
+	addq.l	#6,d0
 	move.l	d0,-(a7)
 	jsr	_initialize_room1
+	addq.l	#4,a7
+	;line	121
+	moveq	#86,d0
+	add.l	8(a6),d0
+	move.l	d0,-(a7)
+	jsr	_initialize_room2
 	unlk	a6
 	rts
 _is_in_bounds:
@@ -157,7 +231,7 @@ _is_in_bounds:
 	move.l	12(a6),a3
 	move.l	8(a6),a4
 	moveq	#16,d3
-	;line	74
+	;line	126
 	move.w	16(a6),d0
 	sub.w	#0,d0
 	beq	L13
@@ -169,74 +243,114 @@ _is_in_bounds:
 	beq	L16
 	bra	L12
 L13:
-	;line	77
+	;line	129
 	move.w	(a4),d0
 	sub.w	d3,d0
 	cmp.w	2(a3),d0
 	ble	L17
-	;line	78
+	;line	130
 	moveq	#1,d0
 	bra	L18
 	bra	L19
 L17:
-	;line	80
+	;line	132
 	moveq	#0,d0
 	bra	L18
 L19:
 L14:
-	;line	83
+	;line	135
 	move.w	(a4),d0
 	add.w	d3,d0
 	cmp.w	8(a3),d0
 	bge	L20
-	;line	84
+	;line	136
 	moveq	#1,d0
 	bra	L18
 	bra	L21
 L20:
-	;line	86
+	;line	138
 	moveq	#0,d0
 	bra	L18
 L21:
 L15:
-	;line	89
+	;line	141
 	move.w	2(a4),d0
 	add.w	d3,d0
 	cmp.w	28(a3),d0
 	bge	L22
-	;line	90
+	;line	142
 	moveq	#1,d0
 	bra	L18
 	bra	L23
 L22:
-	;line	92
+	;line	144
 	moveq	#0,d0
 	bra	L18
 L23:
 L16:
-	;line	95
+	;line	147
 	move.w	2(a4),d0
 	sub.w	d3,d0
 	cmp.w	22(a3),d0
 	ble	L24
-	;line	96
+	;line	148
 	moveq	#1,d0
 	bra	L18
 	bra	L25
 L24:
-	;line	98
+	;line	150
 	moveq	#0,d0
 L25:
 L12:
 L11:
 L18:
-	;line	101
+	;line	153
 	movem.l	(a7)+,d3/a3/a4
 	unlk	a6
 	rts
+_collided:
+	link	a6,#0
+	movem.l	a3/a4,-(a7)
+	move.l	12(a6),a3
+	move.l	8(a6),a4
+	;line	161
+	move.w	(a4),d0
+	cmp.w	(a3),d0
+	blt	L26
+	move.w	(a4),d0
+	cmp.w	2(a3),d0
+	bgt	L26
+	;line	162
+	move.w	2(a4),d0
+	cmp.w	4(a3),d0
+	blt	L27
+	move.w	2(a4),d0
+	cmp.w	6(a3),d0
+	bgt	L27
+	;line	163
+	moveq	#1,d0
+	bra	L28
+	bra	L29
+L27:
+	;line	165
+	moveq	#0,d0
+	bra	L28
+L29:
+	bra	L30
+L26:
+	;line	168
+	moveq	#0,d0
+L30:
+L28:
+	movem.l	(a7)+,a3/a4
+	unlk	a6
+	rts
 	globl	_move_player
+	globl	_set_player
 	globl	_initialize_player
 	globl	_initialize_game
 	globl	_initialize_room1
 	globl	_initialize_array
 	globl	_is_in_bounds
+	globl	_collided
+	globl	_initialize_room2

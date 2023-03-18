@@ -3,11 +3,6 @@
 
 
 
-void blank_screen()
-{
-	printf("\033E\033f\n");					/* blanks screen and hides cursor */
-}
-
 void fill_screen(UINT8 *base, UINT8 pattern)
 {
 	int i = 0;

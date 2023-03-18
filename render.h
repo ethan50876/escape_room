@@ -9,9 +9,11 @@
 
 
 void render_room1 (UINT32 *base, Model *model);
-void render_player_r1 (UINT32 *base, Player *player);
+void render_player(UINT32 *base, Player *player);
 void render_key_r1 (UINT32 *base);
 void render_door_r1 (UINT32 *base);
 void render_map (UINT32 *base);
+void render_player_test (UINT32 *base, Player *player);
+void render_curr_room (UINT32 *base, Model *model, int curr);
 
 #endif

@@ -4,5 +4,6 @@
 #include "TYPES.H"
 
 extern UINT32 demo_room[];
+extern UINT32 proj_room[];
 
 #endif

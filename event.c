@@ -1,7 +1,12 @@
 #include "event.h"
 
 
+/* 
+Params:
+Returns:
+Purpose:
 
+*/
 void player_movement(Player *player, Room *room, unsigned long key_press) {
 	switch (key_press) {
 		
@@ -22,10 +27,23 @@ void player_movement(Player *player, Room *room, unsigned long key_press) {
     }
 	
 }
+/* docu */
+bool switch_room(Player *player, Door *door) {
+	
+	if ((collided(player, &door->door_box) == true)) {
+		return true;
+	} else {
+		return false;
+	}
+	
+		
+}
+
+/*void interact(Player player, etc) */
 
 bool has_user_input() {
 	
-	return (bool) (Cconis());
+	return Cconis();
 
 	
 }

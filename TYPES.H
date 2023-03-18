@@ -13,6 +13,7 @@
 #define GRID_VALUE 16
 #define MAX_ROOMS 10
 #define MAX_BOUNDARIES 9
+#define MAX_DOORS 4
 
 typedef unsigned char UINT8;
 typedef unsigned int  UINT16;

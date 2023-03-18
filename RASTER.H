@@ -9,7 +9,6 @@
 #define SCREEN_HEIGHT 400
 
 
-void blank_screen();
 void fill_screen(UINT8 *base, UINT8 pattern);
 void plot_point(UINT8 *base, int x, int y); 
 void plot_vline(UINT8 *base, int x, int y1, int y2);

@@ -8,6 +8,7 @@
 
 
 void player_movement(Player *player, Room *room, unsigned long key_press);
+bool switch_room(Player *player, Door *door);
 
 bool has_user_input();
 
