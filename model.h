@@ -5,15 +5,27 @@
 #include <osbind.h>
 #include "TYPES.H"
 
-/* docu */
+/* 
+Struct: Player
+Fields: int x - x-cord of top-left vertex
+	int y - y-cord of top-left vertex
+	Direction direction - the direction the player is moving in (strictly cardinal direction)
+*/
 typedef struct{
-    int x;				/*x-cord of top-left vertex */
-	int y;				/*y-cord of top-left vertex */
+    int x;				
+	int y;				
     Direction direction;
 
 } Player;
 
-/* docu */
+/* 
+Struct: Bound
+Purpose: Represents a rectangle box as a hitbox/bound for items/doors
+Fields: int x1 -  left boundary
+	int x2 -  right boundary
+	int y1 -  top boundary
+	int y2 -  bottom boundary
+*/
 typedef struct {
     int x1;
 	int x2;
@@ -21,13 +33,26 @@ typedef struct {
 	int y2;
 } Bound;
 
-/* docu */
+/* 
+Struct: Door
+Fields: Bound door_box - Bound struct representing the boundaries/hitbox of the door
+	bool locked - int typedef representing the locked status of the door
+*/
 typedef struct {
 	Bound door_box;
 	bool locked;
 } Door;
 
-/* docu */
+/* 
+Struct: Room
+Fields: Bound left_bound - rectangle of left wall in room
+	Bound right_bound - rectangle of right wall in room
+	Bound up_bound - rectangle of top wall in room
+	Bound down_bound - rectangle of bottom wall in room
+	Bound item - to-be made into it's own struc
+	Door door_array[MAX_DOORS] - Door array representing the present doors in a room
+
+*/
 typedef struct {
     Bound left_bound; /* each bound has 3 unused fields for checking.  simplify later */
 	Bound right_bound;
@@ -38,7 +63,11 @@ typedef struct {
 } Room;
 
 
-/* docu */
+/* 
+Struct: Model
+Fields: Player player - a Player struct representing the controllable player
+	Room room_array[MAX_ROOMS] - a Room array representing the entire collection of rooms in the game
+*/
 typedef struct { 
 	/*int room_count;*/
     Player player;
