@@ -2,9 +2,9 @@
 
 
 /* 
-Params:
-Returns:
-Purpose:
+Params: a Player struct, a Room struc, an unsigned long 
+Returns: none
+Purpose: Provides a switch-case method for the calls of the move_player function from the model.c file.
 
 */
 void player_movement(Player *player, Room *room, unsigned long key_press) {
@@ -27,7 +27,12 @@ void player_movement(Player *player, Room *room, unsigned long key_press) {
     }
 	
 }
-/* docu */
+/* 
+Params: a Player struct, a Door struct
+Return: a bool (typedef int - 0 representing false and 1 representing true)
+Purpose: uses the collided() function fom model.c to check for collision with a door
+and allowing the player to switch the next respective room
+*/
 bool switch_room(Player *player, Door *door) {
 	
 	if ((collided(player, &door->door_box) == true)) {
