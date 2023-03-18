@@ -1,7 +1,10 @@
 #include "model.h"
 
 
-/* docu */
+/* Param:  Player Struct, Room struct, Direction struct
+*  Return: Void
+*  Purpose: uses direction to change the players coordinates on the grid to allow movement. 
+*/
 void move_player(Player *player, Room *room, Direction direction) {
 	switch (direction) {
 		case left:
@@ -26,18 +29,31 @@ void move_player(Player *player, Room *room, Direction direction) {
 	}
 
 }
+
+/* Param:  Player struct, int, int
+*  Return: Void
+*  Purpose: sets players starting coordinates on the grid 
+*/
 void set_player(Player *player, int x, int y) {
 	
 	player->x = x;
 	player->y = y;
 	
 }
-
+/* Param:  Player struct
+*  Return: void
+*  Purpose: initializes the player for the first room.
+*/
 void initialize_player(Player *player) {
 
 	set_player(player, 320, 300);
 
 }
+
+/* Param:  Model struct
+*  Return: void
+*  Purpose: initializes the different bitmaps and values in the rooms. 
+*/
 void initialize_game(Model *model){
 	
 	initialize_array(model);
@@ -48,6 +64,10 @@ void initialize_game(Model *model){
 }
 
 
+/* Param:  Room struct
+*  Return: void
+*  Purpose: 
+*/
 void initialize_room1(Room *room) {
 	 
 	 room->up_bound.x1 = 0;
@@ -123,7 +143,11 @@ void initialize_array(Model *model){
 	initialize_room2(&(model->room_array[1]));
 }
 
-/* docu */
+/* Param:  Player struct, Room struct, Direction struct
+*  Return: a bool (typedef int - 0 representing false and 1 representing true)
+*  Purpose: Checks the players diretion and current placement on the grid, then compares the players current grid value to the set boundry.
+*           stops the player is they encounter a boundry location.
+*/
 bool is_in_bounds(Player *player, Room *room, Direction direction) {
 	
 	switch (direction) {
@@ -159,7 +183,11 @@ bool is_in_bounds(Player *player, Room *room, Direction direction) {
 	
 }
 
-/* docu */
+/* Param:  Player struct Bound struct
+*  Return: a bool (typedef int - 0 representing false and 1 representing true)
+*  Purpose: Checks for a collisiom between an item or door, if the grid space occupied by the item/door is encountered by the player, set to true 
+*           so an action can be completed. (ie... switch room, pick up key)
+*/
 bool collided (Player *player, Bound *bound) {
 	
 	if ((player->x >= bound->x1) && (player->x <= bound->x2)) {
