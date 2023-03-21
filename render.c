@@ -20,7 +20,7 @@ void render_proj_room (UINT32 *base) {
 
 void render_player(UINT32 *base, Player *player) {
 
-	plot_bitmap_16(base, player16x16, player->x, player->y, 16);
+	plot_bitmap_16((UINT16*) base, player16x16, player->x, player->y, 16);
 
 }
 
@@ -43,7 +43,7 @@ void render_held_r1 (UINT32 *base) {
 }
 void render_player_test (UINT32 *base, Player *player) {
 
-	plot_bitmap_16(base, player16x16, 320, 336, 16);
+	plot_bitmap_16((UINT16*)base, player16x16, 320, 336, 16);
 
 }
 

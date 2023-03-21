@@ -3,10 +3,10 @@
 
 
 
-void fill_screen(UINT8 *base, UINT8 pattern)
+void fill_screen(UINT32 *base, UINT8 pattern)
 {
 	int i = 0;
-	UINT8 *loc = base;
+	UINT32 *loc = base;
 
 	while (i++ < (BYTES_PER_SCREEN))
 		*(loc++) = pattern;

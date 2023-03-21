@@ -15,6 +15,8 @@
 #define MAX_BOUNDARIES 9
 #define MAX_DOORS 4
 
+#define SYSTEM_CLOCK 0x462
+
 typedef unsigned char UINT8;
 typedef unsigned int  UINT16;
 typedef unsigned long UINT32;
