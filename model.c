@@ -47,6 +47,7 @@ void set_player(Player *player, int x, int y) {
 void initialize_player(Player *player) {
 
 	set_player(player, 320, 300);
+	player->heldslot_ID = 0;
 
 }
 
@@ -58,7 +59,7 @@ void initialize_game(Model *model){
 	
 	initialize_array(model);
 	initialize_player(&model->player);
-	/*model->room_count = 0;*/
+
 	
 	
 }
@@ -90,11 +91,21 @@ void initialize_room1(Room *room) {
 	 room->down_bound.y1 = 368;
 	 room->down_bound.y2 = 400;
 	 
-	 room->door_array[0].locked = false;
+	 room->door_array[0].locked = true;
+	 room->door_array[0].door_ID = 1;
+	 room->door_array[0].rotate = 0;
 	 room->door_array[0].door_box.x1 = 288;
 	 room->door_array[0].door_box.x2 = 320;
-	 room->door_array[0].door_box.y1 = 16;
+	 room->door_array[0].door_box.y1 = 0;
 	 room->door_array[0].door_box.y2 = 64;
+	 room->actual_doors = 1;
+	 
+	 room->item.on_stage = true;
+	 room->item.item_ID = 1;
+	 room->item.item_box.x1 = 352;
+	 room->item.item_box.x2 = 384;
+	 room->item.item_box.y1 = 320;
+	 room->item.item_box.y2 = 352;
 	 
 
 }
@@ -131,9 +142,6 @@ void initialize_room2(Room *room) {
 	 room->door_array[1].door_box.x2 = 320;
 	 room->door_array[1].door_box.y1 = 336;
 	 room->door_array[1].door_box.y2 = 400;
-	 
-	 
-
 }
 
 
@@ -234,3 +242,14 @@ bool collided (Player *player, Bound *bound) {
 */
 
 }
+
+
+void update_heldslot (Player *player, Item *item) {
+	
+	player->heldslot_ID = item->item_ID;
+}
+
+
+
+
+

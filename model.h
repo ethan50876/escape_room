@@ -13,7 +13,8 @@ Fields: int x - x-cord of top-left vertex
 */
 typedef struct{
     int x;				
-	int y;				
+	int y;
+	int heldslot_ID;
     Direction direction;
 
 } Player;
@@ -41,7 +42,20 @@ Fields: Bound door_box - Bound struct representing the boundaries/hitbox of the 
 typedef struct {
 	Bound door_box;
 	bool locked;
+	int door_ID;
+	bool rotate; /*0 for horizontal orientation, 1 for vertical */
 } Door;
+
+/*
+Struct: Item
+Fields: Bound door_box - Bound struct representing the boundaries/hitbox of the door
+	bool locked - int typedef representing the locked status of the door
+*/
+typedef struct {
+	Bound item_box;
+	bool on_stage;
+	int item_ID;
+} Item;
 
 /* 
 Struct: Room
@@ -58,9 +72,12 @@ typedef struct {
 	Bound right_bound;
 	Bound up_bound;
 	Bound down_bound;
-	Bound item;        /* to be shifted to it's own struct w/ fields representing status*/
+	Item item;       
 	Door door_array[MAX_DOORS];
+	int actual_doors;
+	/*Proj proj_arr[MAX_PROJ];*/ 
 } Room;
+
 
 
 /* 
@@ -75,6 +92,14 @@ typedef struct {
 	
 } Model;
 
+/*
+typedef struct {
+	Direction direction;
+	Bound proj_box;
+	bool active; 
+	
+}Proj;
+*/
 
 
 void move_player(Player *player, Room *room, Direction direction);
@@ -85,5 +110,6 @@ void initialize_room1(Room *room);
 void initialize_array(Model *model);
 bool is_in_bounds(Player *player, Room *room, Direction direction);
 bool collided (Player *player, Bound *bound);
+void update_heldslot (Player *player, Item *item);
 
 #endif

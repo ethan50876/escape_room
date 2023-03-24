@@ -26,14 +26,60 @@ void render_player(UINT32 *base, Player *player) {
 
 void render_key_r1 (UINT32 *base) {
 
-	plot_bitmap_32(base, key_demo, 350, 300, 32);
+	plot_bitmap_32(base, key_demo, 352, 320, 32);
 	
 }
 
+/*
 void render_door_r1 (UINT32 *base) {
 	
-	plot_bitmap_32(base, door, 288 , 0, 32);
+	plot_bitmap_32(base, horz_door, 288 , 0, 32);
 	
+}
+*/
+
+void render_door (UINT32 *base, Door *door) {
+	
+	if (door->rotate == 0) {
+		plot_bitmap_32(base, horz_door, door->door_box.x1, door->door_box.y1, 32);
+	} else {
+		plot_bitmap_32(base, vert_door, door->door_box.x1, door->door_box.y1, 32);
+	}
+}
+
+void render_item (UINT32 *base, Item *item) {
+	
+	int ID = item->item_ID;
+	switch (ID) {
+		
+	case 0 : 
+	break;
+	case 1:	
+	plot_bitmap_32(base, key_demo, item->item_box.x1, item->item_box.y1, 32);
+	break;
+	
+	default:
+	break;
+	
+	}
+}
+
+void render_heldslot (UINT32 *base, Player *player) {
+	
+	int ID = player->heldslot_ID;
+	switch (ID) {
+		
+	case 0 : 
+	plot_bitmap_32(base, heldslot, 580, 300, 32);
+	break;
+	case 1:	
+	plot_bitmap_32(base, dummy_heldslot, 580, 300, 32);
+	break;
+	
+	default:
+	break;
+	
+	}
 }
 
 void render_held_r1 (UINT32 *base) {
@@ -50,10 +96,6 @@ void render_player_test (UINT32 *base, Player *player) {
 void render_room1 (UINT32 *base, Model *model) {
 	
 	render_map(base);
-	render_player(base, &model->player);
-	render_key_r1(base);
-	render_door_r1(base);
-	render_held_r1(base);
 
 	
 	
@@ -77,7 +119,7 @@ void render_curr_room (UINT32 *base, Model *model, int curr) {
 		case 1:
 		render_proj_room(base);
 		render_projectiles(base);
-		render_player(base, &model->player);
+		/*render_player(base, &model->player);*/
 		
 	
 		break;
@@ -85,7 +127,6 @@ void render_curr_room (UINT32 *base, Model *model, int curr) {
 		break;
 	}
 	
-	render_player(base, &model->player);
 
 
 	
