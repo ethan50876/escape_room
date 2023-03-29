@@ -18,5 +18,18 @@ void render_curr_room (UINT32 *base, Model *model, int curr);
 void render_door (UINT32 *base, Door *door);
 void render_item (UINT32 *base, Item *item);
 void render_heldslot (UINT32 *base, Player *player);
+void render_projectiles(UINT32 *base, Room *room);
+void render_trapdoor1a(UINT32 *base);
+void render_trapdoor1b(UINT32 *base);
+void render_trapdoor1c(UINT32 *base);
+void render_right_key_room(UINT32 *base);
+void render_hallway(UINT32 *base);
+void render_crossroads(UINT32 *base);
+void render_proj_room2(UINT32 *base);
+void render_trapdoor2(UINT32 *base);
+void render_end_room(UINT32 *base);
+
+
+
 
 #endif

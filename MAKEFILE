@@ -1,5 +1,5 @@
-tst_rast: tst_rast.o raster.o rast_asm.o rooms.o bitmaps.o render.o model.o event.o escape.o
-	cc68x -g tst_rast.o raster.o rast_asm.o bitmaps.o rooms.o render.o model.o event.o escape.o -o tst_rast
+tst_rast: tst_rast.o raster.o rast_asm.o bitmaps.o render.o model.o event.o escape.o start.o proj1.o hallway.o cross.o trap1a.o trap1b.o trap1c.o rightkey.o proj2.o leftkey.o trap2.o end.o
+	cc68x -g tst_rast.o raster.o rast_asm.o bitmaps.o render.o model.o event.o escape.o start.o proj1.o hallway.o cross.o trap1a.o trap1b.o trap1c.o rightkey.o proj2.o leftkey.o trap2.o end.o -o tst_rast
 
 tst_rast.o: tst_rast.c 
 	cc68x -g -c tst_rast.c
@@ -12,10 +12,7 @@ rast_asm.o: rast_asm.s
 
 bitmaps.o:	bitmaps.c bitmaps.h
 	cc68x -g -c bitmaps.c
-	
-rooms.o:	rooms.c rooms.h
-	cc68x -g -c rooms.c
-	
+
 render.o: render.c render.h
 	cc68x -g -c render.c
 	
@@ -26,6 +23,46 @@ escape.o: escape.c escape.h
 	cc68x -g -c escape.c
 	
 model.o: model.c model.h
-	cc68x -g -c model.c
+	cc68x -g -c model.c 
 	
+start.o: start.c rooms.h
+	cc68x -g -c start.c 
+	
+proj1.o: proj1.c rooms.h
+	cc68x -g -c proj1.c
 
+hallway.o: hallway.c rooms.h
+	cc68x -g -c hallway.c
+
+cross.o: cross.c rooms.h
+	cc68x -g -c cross.c
+	
+trap1a.o: trap1a.c rooms.h
+	cc68x -g -c trap1a.c
+
+trap1b.o: trap1b.c rooms.h
+	cc68x -g -c trap1b.c
+	
+trap1c.o: trap1c.c rooms.h
+	cc68x -g -c trap1c.c
+	
+rightkey.o: rightkey.c rooms.h
+	cc68x -g -c rightkey.c
+	
+proj2.o: proj2.c rooms.h
+	cc68x -g -c proj2.c
+	
+leftkey.o: leftkey.c rooms.h
+	cc68x -g -c leftkey.c
+	
+trap2.o: trap2.c rooms.h
+	cc68x -g -c trap2.c
+	
+end.o: end.c rooms.h
+	cc68x -g -c end.c
+
+		
+clean:
+	!Rm *.o
+	!Rm tst_rast
+		

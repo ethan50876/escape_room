@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <osbind.h>
 #include "TYPES.H"
+#include "rooms.h"
 
 /* 
 Struct: Player
@@ -57,6 +58,14 @@ typedef struct {
 	int item_ID;
 } Item;
 
+typedef struct {
+	Direction direction;
+	Bound proj_box;
+	/*bool active; */
+	
+}Proj;
+
+
 /* 
 Struct: Room
 Fields: Bound left_bound - rectangle of left wall in room
@@ -75,7 +84,7 @@ typedef struct {
 	Item item;       
 	Door door_array[MAX_DOORS];
 	int actual_doors;
-	/*Proj proj_arr[MAX_PROJ];*/ 
+	Proj proj_array[MAX_PROJ]; 
 } Room;
 
 
@@ -92,20 +101,15 @@ typedef struct {
 	
 } Model;
 
-/*
-typedef struct {
-	Direction direction;
-	Bound proj_box;
-	bool active; 
-	
-}Proj;
-*/
+
+
 
 
 void move_player(Player *player, Room *room, Direction direction);
 void set_player(Player *player, int x, int y);
 void initialize_player(Player *player);
 void initialize_game(Model *model);
+void initialize_room0(Room *room);
 void initialize_room1(Room *room);
 void initialize_array(Model *model);
 bool is_in_bounds(Player *player, Room *room, Direction direction);

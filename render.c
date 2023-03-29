@@ -1,5 +1,5 @@
 #include "render.h"
-
+#include "rooms.h"
 
 
 
@@ -7,15 +7,57 @@
 
 void render_map (UINT32 *base) {
 	
-	plot_room(base, demo_room);
+	plot_room(base, start_room);
 	
 }
 
 
 void render_proj_room (UINT32 *base) {
 	
-	plot_room(base, proj_room);
+	plot_room(base, proj_room1);
+
 	
+}
+
+void render_hallway(UINT32 *base) {
+	
+	plot_room(base, hallway);
+}
+
+void render_crossroads(UINT32 *base) {
+	plot_room(base, crossroads);
+}
+
+void render_trapdoor1a(UINT32 *base) {
+	plot_room(base, trapdoor1a);
+}
+
+void render_trapdoor1b(UINT32 *base) {
+	plot_room(base, trapdoor1b);
+}
+
+void render_trapdoor1c(UINT32 *base) {
+	plot_room(base, trapdoor1c);
+}
+
+void render_right_key_room(UINT32 *base) {
+	plot_room(base, right_key_room);
+}
+void render_proj_room2(UINT32 *base) {
+	plot_room(base, proj_room2);
+}
+
+void render_left_key_room(UINT32 *base) {
+	plot_room(base, left_key_room);
+}
+
+
+void render_trapdoor2(UINT32 *base) {
+	plot_room(base, trapdoor2);
+}
+
+void render_end_room(UINT32 *base) {
+	plot_room(base, end_room);
 }
 
 void render_player(UINT32 *base, Player *player) {
@@ -24,7 +66,7 @@ void render_player(UINT32 *base, Player *player) {
 
 }
 
-void render_key_r1 (UINT32 *base) {
+void render_key_r0 (UINT32 *base) {
 
 	plot_bitmap_32(base, key_demo, 352, 320, 32);
 	
@@ -58,6 +100,15 @@ void render_item (UINT32 *base, Item *item) {
 	plot_bitmap_32(base, key_demo, item->item_box.x1, item->item_box.y1, 32);
 	break;
 	
+	case 2:	
+	plot_bitmap_32(base, key_demo, item->item_box.x1, item->item_box.y1, 32);
+	break;
+	
+	case 3:	
+	plot_bitmap_32(base, key_demo, item->item_box.x1, item->item_box.y1, 32);
+	break;
+	 
+	 
 	default:
 	break;
 	
@@ -71,8 +122,17 @@ void render_heldslot (UINT32 *base, Player *player) {
 		
 	case 0 : 
 	plot_bitmap_32(base, heldslot, 580, 300, 32);
+	
 	break;
 	case 1:	
+	plot_bitmap_32(base, dummy_heldslot, 580, 300, 32);
+	break;
+	
+	case 2:	
+	plot_bitmap_32(base, dummy_heldslot, 580, 300, 32);
+	break;
+	
+	case 3:	
 	plot_bitmap_32(base, dummy_heldslot, 580, 300, 32);
 	break;
 	
@@ -82,7 +142,7 @@ void render_heldslot (UINT32 *base, Player *player) {
 	}
 }
 
-void render_held_r1 (UINT32 *base) {
+void render_held_r0 (UINT32 *base) {
 	
 	plot_bitmap_32(base, heldslot, 580, 300, 32);
 	
@@ -93,19 +153,23 @@ void render_player_test (UINT32 *base, Player *player) {
 
 }
 
-void render_room1 (UINT32 *base, Model *model) {
+void render_room0 (UINT32 *base, Model *model) {
 	
 	render_map(base);
 
 	
 	
 }
-void render_projectiles(UINT32 *base) {
-	plot_bitmap_32(base, projectile, 576, 336, 32);
-	plot_bitmap_32(base, projectile, 64, 304, 32);
-	plot_bitmap_32(base, projectile, 576, 240, 32);
-	plot_bitmap_32(base, projectile, 64, 176, 32);
-	plot_bitmap_32(base, projectile, 576, 144, 32);
+void render_projectiles(UINT32 *base, Room *room) {
+	
+
+	plot_bitmap_32(base, projectile, room->proj_array[0].proj_box.x1, room->proj_array[0].proj_box.y1, 32);
+	plot_bitmap_32(base, projectile, room->proj_array[1].proj_box.x1, room->proj_array[1].proj_box.y1, 32);
+	plot_bitmap_32(base, projectile, room->proj_array[2].proj_box.x1, room->proj_array[2].proj_box.y1, 32);
+	plot_bitmap_32(base, projectile, room->proj_array[3].proj_box.x1, room->proj_array[3].proj_box.y1, 32);
+	plot_bitmap_32(base, projectile, room->proj_array[4].proj_box.x1, room->proj_array[4].proj_box.y1, 32);
+	
+
 }
 
 void render_curr_room (UINT32 *base, Model *model, int curr) {
@@ -114,15 +178,54 @@ void render_curr_room (UINT32 *base, Model *model, int curr) {
 	switch (curr) {
 		
 		case 0: 
-		render_room1(base, model);		
+		render_room0(base, model);		
 		break;
-		case 1:
-		render_proj_room(base);
-		render_projectiles(base);
-		/*render_player(base, &model->player);*/
 		
-	
+		case 1: 
+		render_proj_room(base);
 		break;
+		
+		case 2:
+		render_hallway(base);
+		break;
+		
+		case 3:
+		render_crossroads(base);
+		break;
+		
+		case 4:
+		render_trapdoor1a(base);
+		break;
+		
+		case 5:
+		render_trapdoor1b(base);
+		break;
+		
+		case 6:
+		render_trapdoor1c(base);
+		break;
+		
+		case 7:
+		render_right_key_room(base);
+		break;
+		
+		case 8:
+		render_proj_room2(base);
+		break;
+		
+		case 9:
+		render_left_key_room(base);
+		break;
+		
+		case 10:
+		render_trapdoor2(base);
+		break;
+		
+		case 11:
+		render_end_room(base);
+		break;
+		
+		
 		default:
 		break;
 	}

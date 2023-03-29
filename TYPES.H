@@ -11,7 +11,7 @@
 #define DOWN_KEY 0x50
 
 #define GRID_VALUE 16
-#define MAX_ROOMS 10
+#define MAX_ROOMS 15
 #define MAX_BOUNDARIES 9
 #define MAX_DOORS 4
 #define MAX_PROJ 5

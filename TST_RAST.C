@@ -10,6 +10,7 @@
 int main()
 {
 	
+	
 	game_loop();
 	
 
